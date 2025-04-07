@@ -50,7 +50,7 @@ const LogBox = ({ isLogShow, todoItemDatas }: ILogBoxProps) => {
                 ))}
             </ul>
             <div className="trashIcon" onClick={handleTrashCan}>
-                🗑
+                ↻
             </div>
         </div>
     );
