@@ -26,10 +26,11 @@ const LogBox = ({ isLogShow, todoItemDatas }: ILogBoxProps) => {
     }, [logDatas]);
 
     const handleTrashCan = () => {
-        isLogShow &&
+        if (window.confirm("정말로 모든 로그를 삭제하시겠습니까?")) {
             logStorage.clear().then(() => {
                 setLogDatas([]);
             });
+        }
     };
 
     return (
@@ -49,9 +50,11 @@ const LogBox = ({ isLogShow, todoItemDatas }: ILogBoxProps) => {
                     </li>
                 ))}
             </ul>
-            <div className="trashIcon" onClick={handleTrashCan}>
-                ↻
-            </div>
+            {logDatas.length > 0 && (
+                <div className="trashIcon" onClick={handleTrashCan}>
+                    ↻
+                </div>
+            )}
         </div>
     );
 };
