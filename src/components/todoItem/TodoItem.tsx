@@ -4,7 +4,6 @@ import { todoStorage } from "../../storage/todoStorage";
 import "./TodoItem.css";
 
 interface TodoItemProps {
-    key: number;
     id: number;
     index: number;
     isEnd: boolean;
@@ -25,27 +24,33 @@ const TodoItem = ({
     setUpdateState,
     button,
 }: TodoItemProps) => {
-    const [oldContent, setOldContent] = useState(content);
     const [isEditMode, setIsEditMode] = useState(false);
     const [isEndState, setIsEndState] = useState(isEnd);
     const [isHolding, setIsHolding] = useState(false);
+
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const inputRef = useRef<HTMLInputElement>(null); // input ref 추가
 
     const handleClickItem = () => {
         if (isEditMode) return;
 
         todoStorage.updateIsEnd(id, isEndState).then((response) => {
             setIsEndState(response);
+            setUpdateState(Math.random());
         });
     };
 
     const handleUpdateItem = () => {
-        if (oldContent === content) {
+        if (!inputRef.current) return; // ref가 없는 경우 방지
+
+        const newContent = inputRef.current.value;
+
+        if (newContent === content) {
             setIsEditMode(false);
             return;
         }
 
-        todoStorage.update(id, oldContent, isEndState).then((response) => {
+        todoStorage.update(id, newContent, isEndState).then((response) => {
             setIsEditMode(false);
             setTodoItemDatas(response);
         });
@@ -82,8 +87,15 @@ const TodoItem = ({
     }, [draggedIndex]);
 
     useEffect(() => {
+        todoStorage.getById(id).then((res) => {
+            setIsEndState(res?.isEnd!);
+            setUpdateState(Math.random());
+        });
+    }, [id]);
+
+    useEffect(() => {
         setUpdateState(Math.random());
-    }, [isEditMode, isEndState, oldContent]);
+    }, [isEditMode]);
 
     return (
         <div
@@ -94,16 +106,9 @@ const TodoItem = ({
             onTouchEnd={handleMouseUp}
         >
             {isEditMode ? (
-                <input
-                    autoFocus
-                    className="todo-input"
-                    type="text"
-                    maxLength={24}
-                    value={oldContent}
-                    onChange={(e: { target: HTMLInputElement }) => setOldContent((e.target as HTMLInputElement).value)}
-                />
+                <input ref={inputRef} autoFocus className="todo-input" type="text" maxLength={24} value={content} />
             ) : (
-                <span onClick={handleClickItem} className={`todo-content ${isEndState ? "done" : ""}`}>
+                <span key={id} onClick={handleClickItem} className={`todo-content ${isEndState ? "done" : ""}`}>
                     {content}
                 </span>
             )}

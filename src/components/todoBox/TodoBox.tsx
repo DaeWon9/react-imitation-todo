@@ -14,8 +14,9 @@ export interface TodoBoxProps {
 }
 
 const TodoBox = ({ todoItemDatas, setTodoItemDatas, isLogShow, setIsLogShow }: TodoBoxProps) => {
-    const [content, setContent] = useState("");
     const [updateState, setUpdateState] = useState<number>(0);
+
+    const inputRef = useRef<HTMLInputElement>(null);
     const todoListRef = useRef<HTMLUListElement>(null);
     const draggedIndexRef = useRef<number | null>(null);
 
@@ -32,11 +33,14 @@ const TodoBox = ({ todoItemDatas, setTodoItemDatas, isLogShow, setIsLogShow }: T
     };
 
     const handleAddTodo = () => {
-        if (content.trim()) {
-            todoStorage.create(content, false).then((response) => {
-                setContent("");
+        inputRef.current?.blur(); // focus 해제
+        const value = inputRef.current?.value;
+        if (value && value.trim()) {
+            todoStorage.create(value, false).then((response) => {
                 setTodoItemDatas(response);
-                setUpdateState(Math.random());
+                if (inputRef.current) {
+                    inputRef.current.value = ""; // ref로 직접 값 변경
+                }
             });
         }
     };
@@ -86,14 +90,12 @@ const TodoBox = ({ todoItemDatas, setTodoItemDatas, isLogShow, setIsLogShow }: T
             <div>
                 <div className="input-wrapper">
                     <input
+                        ref={inputRef}
+                        id="todo-input"
+                        className="todo-input"
                         type="text"
                         maxLength={24}
-                        value={content}
-                        onChange={(e: { target: { value: string | ((prev: string) => string) } }) =>
-                            setContent(e.target.value)
-                        }
                         onKeyPress={handleKeyPress}
-                        className="todo-input"
                     />
                     <Button size={ButtonSize.LARGE} type={ButtonType.ADD} onClick={handleAddTodo}>
                         등록
@@ -110,7 +112,6 @@ const TodoBox = ({ todoItemDatas, setTodoItemDatas, isLogShow, setIsLogShow }: T
                             onDragOver={handleDragOver}
                         >
                             <TodoItem
-                                key={todoItem.id}
                                 id={todoItem.id}
                                 index={index}
                                 isEnd={todoItem.isEnd}
