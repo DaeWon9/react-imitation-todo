@@ -6,6 +6,7 @@
     padding: 12px;
     background-color: transparent;
     cursor: pointer;
+    gap: 12px;
 }
 
 .todo-item.dragged {
