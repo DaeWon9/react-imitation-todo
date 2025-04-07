@@ -1,4 +1,4 @@
-## react-imitation-todo
+# react-imitation-todo
 
 React Imitation 라이브러리를 사용하여 구현한 간단한 Todo 애플리케이션입니다. React Imitation의 기본적인 기능들을 활용하여 Todo 앱의 핵심 기능들을 구현하고, 사용자 경험을 향상시키기 위한 몇 가지 부가적인 기능들을 추가했습니다.
 
@@ -20,5 +20,5 @@ React Imitation 라이브러리를 사용하여 구현한 간단한 Todo 애플�
     *   사용자는 활동 로그를 통해 Todo 앱의 사용 이력을 쉽게 확인할 수 있습니다.
 
 
-https://github.com/user-attachments/assets/25455b73-d3e6-4bff-8ccf-201156418e78
+https://github.com/user-attachments/assets/c5b1e0f4-2f88-4e33-bb08-368a79321201
 
