@@ -1,0 +1,67 @@
+.todo-box {
+    width: 30%;
+    min-width: 600px;
+    max-width: 1200px;
+    min-height: 600px;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 10px gainsboro;
+    z-index: 999;
+    padding: 60px 80px;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+.todo-box.show-log {
+    margin-left: 0;
+}
+
+.todo-box.hide-log {
+    margin-left: 20%;
+}
+
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.log-toggle-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    color: #aaa;
+    font-size: 2rem;
+    user-select: none;
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 0;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.todo-list {
+    overflow-y: auto;
+    height: 300px;
+    scrollbar-width: thin;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
