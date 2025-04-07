@@ -1,0 +1,26 @@
+.button {
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.button--DELETE {
+    background-color: #d8595d;
+}
+.button--ADD {
+    background-color: #5d56e7;
+}
+.button--EDIT {
+    background-color: #56a35d;
+}
+
+.button--LARGE {
+    font-size: large;
+    padding: 6px 12px;
+}
+
+.button--SMALL {
+    font-size: small;
+    padding: 4px 8px;
+}
