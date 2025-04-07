@@ -18,7 +18,7 @@ const saveTodos = (todos: ITodoItem[]) => {
 export const todoStorage = {
     getAll: async (): Promise<ITodoItem[]> => {
         const todos = JSON.parse(localStorage.getItem(TODO_KEY) || "[]");
-        return todos.slice();
+        return todos;
     },
 
     getById: async (id: number): Promise<ITodoItem | undefined> => {
