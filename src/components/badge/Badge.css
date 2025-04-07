@@ -1,0 +1,26 @@
+.badge {
+    padding: 4px 10px;
+    padding-top: 6px;
+    border-radius: 12px;
+    width: fit-content;
+    font-size: 0.7rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge--DELETE {
+    color: #d8595d;
+    background-color: #f7dedf;
+}
+
+.badge--ADD {
+    color: #5d56e7;
+    background-color: #dfddfa;
+}
+
+.badge--EDIT {
+    color: #56a35d;
+    background-color: #ddedde;
+}
