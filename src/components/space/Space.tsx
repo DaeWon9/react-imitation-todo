@@ -1,5 +1,5 @@
 import ReactImitation from "daewon-react-imitation";
-import "./space.css";
+import "./Space.css";
 
 interface SpaceProps {
     size: number;
