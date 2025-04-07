@@ -1,0 +1,17 @@
+.log-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.log-item__edit {
+    margin-right: 14px;
+    word-break: break-all;
+}
+
+.log-item__old {
+    text-decoration: line-through;
+}

@@ -3,3 +3,5 @@ export { ButtonType, ButtonSize } from "./button/Button";
 
 export { default as Badge } from "./badge/Badge";
 export { BadgeType } from "./badge/Badge";
+
+export { default as LogItem } from "./logItem/LogItem";
