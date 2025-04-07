@@ -1,0 +1,28 @@
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.todo-item.dragged {
+    background-color: #eee;
+}
+
+.todo-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.todo-content {
+    flex-grow: 1;
+}
+
+.todo-content.done {
+    text-decoration: line-through;
+}
