@@ -3,6 +3,7 @@ import { BadgeType } from "../badge/Badge";
 import "./LogItem.css";
 
 export interface LogItemProps {
+    key?: number | string;
     content: string;
     oldContent: string;
     type: BadgeType;
@@ -11,7 +12,7 @@ export interface LogItemProps {
 
 const LogItem = ({ content, oldContent, type, badge }: LogItemProps) => {
     return (
-        <li className="log-item">
+        <div className="log-item">
             {type === BadgeType.EDIT ? (
                 <div className="log-item__edit">
                     <span className="log-item__old">{oldContent}</span> → <span>{content}</span>
@@ -20,7 +21,7 @@ const LogItem = ({ content, oldContent, type, badge }: LogItemProps) => {
                 content
             )}
             {badge}
-        </li>
+        </div>
     );
 };
 
